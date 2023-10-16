@@ -3,10 +3,11 @@
 This is the iteration assignment in BAN400. As you know -- given that you have come this far -- the assignments in BAN400 will be organized through Github and Github Classroom. By accepting this assignment, the repository will be copied to your Github user so that you can clone it to your own personal machine and work on it. Then, you simply commit your changes and push back to Github when you are done. You can commit and push as much as you want before the deadline.
 
 **Date:**
-
+2023-10-16
 **Name:**
-
+Gulbrand Galaasen
 **Student number:**
+s195110
 
 ## :information_source: Problem 1
 Update the personal information above.
