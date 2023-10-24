@@ -10,7 +10,8 @@ test_stations_metadata_colnames <-
     
     expected_colnames <- c("id", "name", "latestData", "lat", "lon")
     
-    if (all(colnames(df) == expected_colnames) == TRUE) {
+    # Check if colnames from df are equal to what is expected
+    if (all(colnames(df) == expected_colnames) == TRUE) { 
       print("PASS: Data has the correct columns")
     } else{
       print("FAIL: Columns do not match the correct specification")
@@ -23,6 +24,7 @@ test_stations_metadata_nrows <-
     min_expected_rows <- 5000
     max_expected_rows <- 10000
     
+    # Check if number of rows is within a feasible range
     if (nrow(df) > min_expected_rows & nrow(df) < max_expected_rows) {
       print("PASS: Data has a reasonable number of rows")
     } else if (nrow(df) <= min_expected_rows) {
@@ -37,6 +39,7 @@ test_stations_metadata_coltypes <-
     expected_coltypes <-
       c("character", "character", "double", "double", "double")
     
+    # Check if the column types of the returned df is reasonable
     if (all(df %>%
             map_chr( ~ typeof(.)) == expected_coltypes) == TRUE) {
       print("PASS: All cols have the correct specifications")
@@ -49,6 +52,7 @@ test_stations_metadata_nmissing <-
   function(df) {
     max_miss_vals <- 200
     
+    # Check if there are any missing data in the df
     if (df %>% map_int( ~ sum(is.na((.)))) %>% sum(.) < max_miss_vals) {
       print("PASS: Amount of missing values is reasonable")
     } else {
@@ -59,6 +63,7 @@ test_stations_metadata_nmissing <-
 test_stations_metadata_latestdata_timezone <-
   function(df) {
     
+    # Check if datetime column has the correct timezone
     if (attr(df$latestData,"tzone")=="UTC") {
       print("PASS: latestData has UTC-time zone")
     } else {
@@ -66,7 +71,7 @@ test_stations_metadata_latestdata_timezone <-
     }
   }
 
-
+# Create test of all tests above
 test_stations_metadata <- 
   function(df){
     test_stations_metadata_colnames(df)
